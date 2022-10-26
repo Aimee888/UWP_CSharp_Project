@@ -19,8 +19,8 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1" Name="FrameContainer" x:FieldModifier="public" Background="LightGray" Margin="10,10,10,0" Padding="0" BorderBrush="#55020403" BorderThickness="2">
-        </Grid>
+        <Frame Grid.Row="1" Name="FrameContainer" x:FieldModifier="public" Background="LightGray" Margin="10,10,10,0" Padding="0" BorderBrush="#55020403" BorderThickness="2">
+        </Frame>
 
     </Grid>
 </Page>
