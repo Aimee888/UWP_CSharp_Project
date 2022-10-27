@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,7 +26,6 @@ namespace PaintTable
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        //DateTime startDate = DateTime.Now;
         public MainPage()
         {
             this.InitializeComponent();
@@ -39,7 +39,6 @@ namespace PaintTable
         {
             List<Project> Projects = new List<Project>();
 
-            //// 第一列
             Project newProject = new Project();
 
             for (int i = 0; i < 16; i++)
@@ -49,7 +48,7 @@ namespace PaintTable
                 for (int j = 0; j < 16; j++)
                 {
                     newProject.Activities.Add(new Activity()
-                    { Name = "00" });
+                    { Name = "00"});
                 }
                 Projects.Add(newProject);
             }
@@ -57,6 +56,11 @@ namespace PaintTable
             cvsProjects.Source = Projects;
         }
 
+        private void ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var tablemod = (sender as GridView).SelectedItem;
+            Debug.WriteLine(tablemod);
+        }
     }
 
     public class Project

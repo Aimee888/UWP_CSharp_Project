@@ -12,25 +12,40 @@ https://learn.microsoft.com/zh-CN/uwp/api/windows.ui.xaml.controls.gridview?view
 ![](./pic/3.png)  
 
 ## 使用GridView画表格  
-当前画出了16 * 16的 表格，但是单元格大小不能很紧凑的在一起。  
+解决了单元格大小不能很紧凑的在一起。但是无法显示框线，也不知道如何调用双击事件。Game Over  
 XAML
 ~~~xml
-<GridView Grid.Row="0" ItemsSource="{Binding Source={StaticResource cvsProjects}}">
+<GridView ItemsSource="{Binding Source={StaticResource cvsProjects}}" IsItemClickEnabled="True" ItemClick="ItemClick" SelectionMode="None">
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="Margin" Value="0"/>
+                    <!--<Setter Property="Padding" Value="0" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />-->
                 </Style>
             </GridView.ItemContainerStyle>
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                    <StackPanel BorderBrush="Black" Orientation="Vertical" Height="30" Width="30">
+                        <TextBlock Text="{Binding Name}" 
+                               FontSize="12"/>
                     </StackPanel>
+                    <!--<Border Height="30" Width="30">
+                        <TextBlock Text="{Binding Name}" 
+                               FontSize="12"/>
+                    </Border>-->
+                    <!--<TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="8"/>-->
+                    <!--<StackPanel>
+                        <TextBlock MaxWidth="30" MaxHeight="30" HorizontalAlignment="Center" Text="{Binding Name}"/>
+                    </StackPanel>-->
                 </DataTemplate>
             </GridView.ItemTemplate>
+
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="16" />
+                    <!--<ItemsWrapGrid MaximumRowsOrColumns="16" ItemWidth="25" ItemHeight="25" />-->
+                    <!--<WrapGrid MaximumRowsOrColumns="16" ItemWidth="30" ItemHeight="30" Orientation="Horizontal" VerticalChildrenAlignment="Center" />-->
+                    <WrapGrid MaximumRowsOrColumns="16" ItemWidth="30" ItemHeight="30" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
 
