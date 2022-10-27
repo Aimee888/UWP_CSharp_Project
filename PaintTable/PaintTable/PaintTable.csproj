@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{E8637A3D-0413-47FD-BFF6-2A8A3C9DDBF6}</ProjectGuid>
+    <ProjectGuid>{CEA63DFE-6842-43A2-9429-FE357AA8D58B}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PaintTable</RootNamespace>

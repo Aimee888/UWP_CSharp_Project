@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="d032bf61-7d2c-41e0-80d5-7a56125a5a31"
+    Name="080e1d04-0bef-4040-860e-9eaf8b8f6679"
     Publisher="CN=WYM"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="d032bf61-7d2c-41e0-80d5-7a56125a5a31" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="080e1d04-0bef-4040-860e-9eaf8b8f6679" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>PaintTable</DisplayName>
