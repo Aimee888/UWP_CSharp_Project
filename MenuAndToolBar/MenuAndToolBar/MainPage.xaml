@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="MenuAndToolBar.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MenuAndToolBar"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <!--菜单栏-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <MenuBar Grid.Row="0">
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="New" Click="New_Clicked"/>
+                <MenuFlyoutItem Text="Open"/>
+                <MenuFlyoutItem Text="Save"/>
+                <MenuFlyoutItem Text="Add"/>
+                <MenuFlyoutItem Text="Delete"/>
+                <MenuFlyoutItem Text="Close"/>
+            </MenuBarItem>
+
+            <MenuBarItem Title="About">
+                <MenuFlyoutItem Text="About"/>
+            </MenuBarItem>
+        </MenuBar>
+
+        <!--工具栏-->
+        <Grid Grid.Row="1" Margin="10,0,10,10" Padding="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="New_Button" Grid.Column="0" Click="New_Clicked" Padding="0" Height="40" Width="40" Background="{x:Null}" ToolTipService.ToolTip="New File" ToolTipService.Placement="Bottom">
+                <StackPanel>
+                    <Image Source="/Assets/PCI_Device.png" Height="40" Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Open_Button" Grid.Column="1" Padding="0" Height="40" Width="40" Background="{x:Null}" ToolTipService.ToolTip="Open File" ToolTipService.Placement="Bottom">
+                <StackPanel>
+                    <Image Source="/Assets/Memory_Dump.png" Height="40" Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Save_Button" Grid.Column="2" Padding="0" Height="40" Width="40" Background="{x:Null}" ToolTipService.ToolTip="Save File" ToolTipService.Placement="Bottom">
+                <StackPanel>
+                    <Image Source="/Assets/IO_Space.png" Height="40" Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Add_Button" Grid.Column="3" Padding="0" Height="40" Width="40" Background="{x:Null}" ToolTipService.ToolTip="Add File" ToolTipService.Placement="Bottom">
+                <StackPanel>
+                    <Image Source="/Assets/IO_Index_Data.png" Height="40" Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Delete_Button" Grid.Column="4" Padding="0" Height="40" Width="40" Background="{x:Null}" ToolTipService.ToolTip="Delete File" ToolTipService.Placement="Bottom">
+                <StackPanel>
+                    <Image Source="/Assets/LockScreenLogo.scale-200.png" Height="40"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Close_Button" Grid.Column="5" Padding="0" Height="40" Width="40" Background="{x:Null}" ToolTipService.ToolTip="Close File" ToolTipService.Placement="Bottom">
+                <StackPanel>
+                    <Image Source="/Assets/LockScreenLogo.scale-200.png" Height="40"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="2" Name="FrameContainer" x:FieldModifier="public" Background="LightGray" Margin="10,0,10,0" Padding="0" BorderBrush="#55020403" BorderThickness="2">
+            <!--<TextBox PlaceholderText=""/>-->
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="10,0,10,0" Padding="0">
+            <TextBlock x:Name="myTextBlock" Text="This text is on the fast path."/>
+        </Grid>
+
+    </Grid>
+</Page>
