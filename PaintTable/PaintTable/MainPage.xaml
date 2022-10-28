@@ -10,33 +10,29 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1">
-            <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="False" FontStretch="Normal" FontSize="8" HeadersVisibility="Row">
-                <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Header="00" Binding="{Binding zero}"/>
-                    <controls:DataGridTextColumn Header="01" Binding="{Binding one}"/>
-                    <controls:DataGridTextColumn Header="02" Binding="{Binding two}"/>
-                    <controls:DataGridTextColumn Header="03" Binding="{Binding three}"/>
-                    <controls:DataGridTextColumn Header="04" Binding="{Binding four}"/>
-                    <controls:DataGridTextColumn Header="05" Binding="{Binding five}"/>
-                    <controls:DataGridTextColumn Header="06" Binding="{Binding six}"/>
-                    <controls:DataGridTextColumn Header="07" Binding="{Binding seven}"/>
-                    <controls:DataGridTextColumn Header="08" Binding="{Binding eight}"/>
-                    <controls:DataGridTextColumn Header="09" Binding="{Binding nine}"/>
-                    <controls:DataGridTextColumn Header="0A" Binding="{Binding ten}"/>
-                    <controls:DataGridTextColumn Header="0B" Binding="{Binding eleven}"/>
-                    <controls:DataGridTextColumn Header="0C" Binding="{Binding twelve}"/>
-                    <controls:DataGridTextColumn Header="0D" Binding="{Binding thirteen}"/>
-                    <controls:DataGridTextColumn Header="0E" Binding="{Binding fourteen}"/>
-                    <controls:DataGridTextColumn Header="0F" Binding="{Binding fifteen}"/>
-                </controls:DataGrid.Columns>
-            </controls:DataGrid>
-        </StackPanel>
+        <Grid x:Name="myGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="17" Name="positionTest" Foreground="Blue">测试</TextBlock>
+        </Grid>
 
 
     </Grid>

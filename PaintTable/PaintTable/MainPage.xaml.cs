@@ -1,6 +1,8 @@
 ﻿using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,89 +25,96 @@ namespace PaintTable
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public int buttonCounter = 0;
         public MainPage()
         {
             this.InitializeComponent();
-            test();
+            //test();
+            initial_grid();               
         }
 
-
-        new class Person
-        {
-            public string zero { get; set; }
-            public string one { get; set; }
-            public string two { get; set; }
-            public string three { get; set; }
-            public string four { get; set; }
-            public string five { get; set; }
-            public string six { get; set; }
-            public string seven { get; set; }
-            public string eight { get; set; }
-            public string nine { get; set; }
-            public string ten { get; set; }
-            public string eleven { get; set; }
-            public string twelve { get; set; }
-            public string thirteen { get; set; }
-            public string fourteen { get; set; }
-            public string fifteen { get; set; }
-
-        }
-
-        public void test()
-        {
-            List<Person> Persons = new List<Person>();
-            for (int i = 0; i < 16; i++)
+        private void initial_grid() {
+            for (int i = 0; i < 17; i++)
             {
-                if (i == 0)
+                for (int j = 0; j < 17; j++)
                 {
-                    Persons.Add(new Person()
+                    Button b = new Button();
+                    b.Height = 35;
+                    b.Width = 35;
+                    b.VerticalAlignment = VerticalAlignment.Top;
+                    b.HorizontalAlignment = HorizontalAlignment.Left;
+                    b.Margin = new Thickness(0, 0, 0, 0);
+                    b.FontSize = 10;
+                    b.Name = (i*17+j).ToString(); 
+                    if (i == 0 && j == 0)
                     {
-                        zero = "00",
-                        one = "01",
-                        two = "02",
-                        three = "03",
-                        four = "04",
-                        five = "05",
-                        six = "06",
-                        seven = "07",
-                        eight = "08",
-                        nine = "09",
-                        ten = "0A",
-                        eleven = "0B",
-                        twelve = "0C",
-                        thirteen = "0D",
-                        fourteen = "0E",
-                        fifteen = "0F",
-                    });
-                }
-                else {
-                    string a = i.ToString("X2");
-                    Persons.Add(new Person()
+                        b.Content = "00";
+                        Windows.UI.Xaml.Media.SolidColorBrush mycolor = new SolidColorBrush(Windows.UI.Colors.LightYellow);
+                        b.Background = mycolor;
+                        Windows.UI.Xaml.Media.SolidColorBrush mycolor1 = new SolidColorBrush(Windows.UI.Colors.Red);
+                        b.Foreground = mycolor1;
+                        
+                    }
+                    else if (i == 0 && j != 0)
                     {
-                        zero = a,
-                        one = "00",
-                        two = "00",
-                        three = "00",
-                        four = "00",
-                        five = "00",
-                        six = "00",
-                        seven = "00",
-                        eight = "00",
-                        nine = "00",
-                        ten = "00",
-                        eleven = "00",
-                        twelve = "00",
-                        thirteen = "00",
-                        fourteen = "00",
-                        fifteen = "00",
-                    });
+                        b.Content = (j - 1).ToString("X2");
+                        //b.IsEnabled = false;
+                        Windows.UI.Xaml.Media.SolidColorBrush mycolor = new SolidColorBrush(Windows.UI.Colors.LightYellow);
+                        b.Background = mycolor;
+                        
+
+                    }
+                    else if (i != 0 && j == 0)
+                    {
+                        b.Content = (i - 1).ToString("X2");
+                        //b.IsEnabled = false;
+                        Windows.UI.Xaml.Media.SolidColorBrush mycolor = new SolidColorBrush(Windows.UI.Colors.LightYellow);
+                        b.Background = mycolor;
+                        
+                    }
+                    else
+                    {
+                        b.Content = "00";
+                        Windows.UI.Xaml.Media.SolidColorBrush mycolor = new SolidColorBrush(Windows.UI.Colors.White);
+                        b.Background = mycolor;
+                    }
+
+                    b.Click += Button_Click;
+                    b.DoubleTapped += B_DoubleTapped;
+
+                    int column = (int)(buttonCounter / 17);
+                    int row = buttonCounter % 17;
+
+                    // Check if you need to add a columns
+                    if (row == 0)
+                    {
+                        ColumnDefinition col = new ColumnDefinition();
+                        col.Width = new GridLength(column, GridUnitType.Auto);
+                        myGrid.ColumnDefinitions.Add(col);
+                    }
+                    //Add the button
+                    myGrid.Children.Add(b);
+                    Grid.SetColumn(b, column);
+                    Grid.SetRow(b, row);
+                    buttonCounter++;
                 }
-                
             }
-            dataGrid.ItemsSource = null; //This is needed before re-bind data
-            dataGrid.ItemsSource = Persons;
+        }
+
+        private void B_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e) // 鼠标双击事件
+        {
+            //throw new NotImplementedException(); 
+            Button button = (Button)sender;
+            System.Diagnostics.Debug.WriteLine(button.Name);
+            positionTest.Text = button.Name;
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)  // 鼠标单击事件
+        {
+             // 此处可以通过获取button的Name得到Button的坐标，前面初始化时是根据坐标定的Name名称
+            //Button button = (Button)sender;
+            //System.Diagnostics.Debug.WriteLine(button.Name);
+        }
     }
 }
