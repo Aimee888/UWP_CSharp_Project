@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="XamlRelateCS.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XamlRelateCS"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Name="ToPage1" Content="To Page1" Width="100" Height="100" HorizontalAlignment="Center" Click="Button_Click"></Button>
+        <Button Grid.Row="1" Name="ToPage2" Content="To Page2" Width="100" Height="100" HorizontalAlignment="Center" Click="Button_Click"></Button>
+        <Button Grid.Row="2" Name="ToPage3" Content="To Page3" Width="100" Height="100" HorizontalAlignment="Center" Click="Button_Click"></Button>
+
+    </Grid>
+</Page>
