@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel.Core;
+using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,27 +22,26 @@ namespace OpenSecondWindow
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class SecondWindow : Page
+    public sealed partial class ThirdWindow : Page
     {
-        public SecondWindow()
+        public ThirdWindow()
         {
             this.InitializeComponent();
+            this.Loaded += Page_Loaded;
         }
 
-        private async void Button_Clicked(object sender, RoutedEventArgs e)
+        private void Clicked_Button(object sender, RoutedEventArgs e)
         {
-            CoreApplicationView newView = CoreApplication.CreateNewView();
+            var s = ApplicationView.GetForCurrentView();
+            s.TryResizeView(new Size { Width = 400, Height = 200 });
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(100, 60));
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(ThirdWindow), null);
-                Window.Current.Content = frame;
-                Window.Current.Activate();
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+            Thread.Sleep(10);
+            var s = ApplicationView.GetForCurrentView();
+            s.TryResizeView(new Size { Width = 400, Height = 200 }); 
         }
     }
 }

@@ -9,6 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="10,0,10,0" Padding="0">
+            <Button x:Name="Open_Third_Window" Grid.Column="0" Click="Button_Clicked" Margin="0,10,0,0" Padding="0" Height="40" Width="400">
+            </Button>
+        </Grid>
+
+        <Frame Grid.Row="1" Name="FrameContainer2" x:FieldModifier="public" Background="LightGray" Margin="10,10,10,0" Padding="0" BorderBrush="#55020403" BorderThickness="2">
+        </Frame>
         
     </Grid>
 </Page>
